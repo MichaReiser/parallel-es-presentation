@@ -7,6 +7,8 @@
 		\item \dots as well as all functions executed in background threads
 	\end{itemize}
 	
+	\vfill
+	
 	\begin{block}{Comparsion to other Languages}
 		Other languages, e.g. Java, have a shared memory that is accessible by all threads. However, 
 			parallelization in JavaScript is more like multiprocess programming using inter process communication.
@@ -22,7 +24,7 @@
 
 \begin{frame}{Runtime Serialization of Functions - Overview}
 	\begin{center}
-		\includegraphics[width=1.0\textwidth]{runtime-system}
+		\includegraphics[width=0.8\textwidth]{runtime-system}
 	\end{center}
 \end{frame}
 
@@ -69,8 +71,10 @@ return Function.apply(undefined, [
 
 are not supported by Runtime Serialization
 
+\vfill 
+
 \begin{block}{Why Not?}
-It's possible to analyze a function at runtime, e.g. by using Babel. However, there is no way to get access to the values of a function's closure as it is the case in C\#. This is a security feature of JS.	
+It's possible to analyze a function at runtime, e.g. by using Babel. However, there is no way to get access to the values of a function's closure as it is the case in C\#. 	
 \end{block}
 \end{frame}
 
@@ -104,7 +108,7 @@ parallel
 	\pause
 	\begin{column}{0.5\textwidth}
 		\begin{block}{Worker-Thread}
-			\begin{javascriptcode*}{fontsize=\tiny}
+			\begin{javascriptcode*}{fontsize=\tiny, highlightlines={2, 4}}
 function computeMandelbrotLine(y) {
 	const l = new Uint8ClampedArray(width * 4);
 	for (let x = 0; x < width; ++x) {
@@ -133,11 +137,11 @@ function computeMandelbrotLine(y) {
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile, shrink]{Transpiled UI-Thread Code of Mandelbrot}
+\begin{frame}[fragile, shrink]{Transpiled Code of Mandelbrot Example}
 \begin{columns}[t]
 	\begin{column}{0.5\textwidth}
 		UI-Thread
-		\begin{javascriptcode*}{highlightlines={8-12, 22-26}, fontsize=\fontsize{5pt}{6pt}, linenos=false, xleftmargin=0pt}
+		\begin{javascriptcode*}{highlightlines={8-10, 20-24}, fontsize=\tiny}
 const width = 10000;
 const height = 10000;
 
@@ -146,9 +150,7 @@ function computePixel(x, y) {
 }
 
 function _environmentExtractor() { 
-	return {
-		width: width
-	};
+	return { width: width };
 }
 
 function computeMandelbrotLine(y) {
@@ -169,7 +171,7 @@ parallel
 	\end{column}
 	\begin{column}{0.5\textwidth}
 	Worker-Thread
-	\begin{javascriptcode*}{highlightlines={1, 2, 6, 12, 22-27}, fontsize=\fontsize{5pt}{6pt}, linenos=false, xleftmargin=0pt}
+	\begin{javascriptcode*}{highlightlines={1, 2, 6, 12, 22-27}, fontsize=\tiny}
 var width;
 function computePixel(x, y) { 
 	// ...

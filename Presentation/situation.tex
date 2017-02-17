@@ -10,7 +10,7 @@
 
 \begin{frame}{Web Worker Architecture}
 	\begin{center}
-		\includegraphics[width=0.9\textwidth]{web-workers}~\cite{Swenson-Healey2013}
+		\includegraphics[width=0.8\textwidth]{web-workers}~\cite{Swenson-Healey2013}
 	\end{center}
 	
 	\begin{alertblock}{Memory}
@@ -42,8 +42,7 @@ function fib(num) {
 	if(num <= 2) {
 		return 1;
 	}
-	return fib(num - 1) + 
-		fib(num - 2);
+	return fib(num - 1) + fib(num - 2);
 }
 
 onmessage = function (event) {

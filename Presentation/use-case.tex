@@ -1,7 +1,7 @@
 \section{Use Case}
 \begin{frame}{Riskprofiling}
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{risk-profiling}
+		\includegraphics[height=0.8\textheight]{risk-profiling}
 	\end{center}
 \end{frame}
 
@@ -54,6 +54,7 @@
 		\item Median, min, max are computed in the chart
 	\end{itemize}
 	
+	\vfill
 	\begin{alertblock}{Main Concern}
 		Simulation returns all values instead of the needed information median, min and max. Therefore, absolutely unsuited for parallelization because of large data amount to be transferred.
 	\end{alertblock}
@@ -131,7 +132,7 @@ for (let i = 0; i < simulatedValuesThisYear.length; i += bucketSize) {
 
 \begin{frame}{...that makes it Impossible to Optimize the Property Access}
 	\begin{center}
-		\includegraphics[width=1\textwidth]{memory-model}
+		\includegraphics[width=0.7\textwidth]{memory-model}
 	\end{center}
 	
 	Depending on the order of the simulated values the offset for the properties differ, e.g. for \enquote{green}:
