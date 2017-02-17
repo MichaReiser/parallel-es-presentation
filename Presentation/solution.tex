@@ -1,0 +1,136 @@
+\section{Parallel.es}
+\subsection{Overview}
+
+\begin{frame}{Parallel.es eases parallelizing JavaScript applications}
+	\begin{itemize}
+		\item The API is type-safe
+		\item \dots and runtime environment independent, write once, run everywhere
+		\item Uses a thread pool
+		\item Detects the optimum of threads to create
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\enquote{Simple} Example}
+	\begin{javascriptcode}
+import parallel from "parallel-es";
+
+function fib(num) {
+	if(num <= 2) {
+		return 1;
+	}
+	return fib(num - 1) + fib(num - 2);
+}
+
+parallel.run(fib, 40)
+	.catch(error => console.error(error))
+	.then(result => console.log(result));
+	\end{javascriptcode}
+\end{frame}
+
+\begin{frame}{The Mandelbrot Showcase}
+	\begin{center}
+		\includegraphics[height=0.7\textheight]{mandelbrot}
+	\end{center}
+	
+	\url{https://michareiser.github.io/parallel-es-example/}
+\end{frame}
+
+\begin{frame}[fragile, shrink]{Code for Single Threaded Execution}
+		\begin{javascriptcode}
+const imageWidth = 10000;
+const imageHeight = 10000;
+
+function computePixel(x, y) {
+	// ...
+	return n;
+}
+
+function computeMandelbrotLine(y) {
+	const line = new Uint8ClampedArray(imageWidth * 4);
+	for (let x = 0; x < imageWidth; ++x) {
+		line[x * 4] = computePixel(x, y);
+	}
+	return line;
+}
+
+const result = _.chain()
+	.range(imageHeight)
+	.map(computeMandelbrotLine)
+	.value();
+	
+// draw to canvas
+\end{javascriptcode}
+\end{frame}
+
+\begin{frame}{Idea}
+	\begin{itemize}
+		\item Compute Lines in Background Threads
+		\item Preferred, create as many Background Threads as CPU's are available
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Poor Mans Solution}
+	\begin{javascriptcode}
+const imageWidth = 10000;
+const imageHeight = 10000;
+
+function computePixel(x, y) {
+	// ...
+	return n;
+}
+
+function computeMandelbrotLine(y) {
+	// ...
+	return line;
+}
+
+for (int i = 0; i < imageHeight; ++i) {
+	parallel.run(computeMandelbrotLine, i).then(line => {
+		// draw to canvas
+	});
+}
+	\end{javascriptcode}
+\end{frame}
+
+\begin{frame}{It works\footnote{Actually, it depends, details follow}! But\dots}
+	\begin{itemize}
+		\item I don't want to be responsible to split the work on multiple threads
+		\item Flow of logic is hard to catch
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Therefore, Parallel.es offers a descriptive API}
+	\begin{itemize}
+		\item Inspired by lodash / underscore
+		\item Handles Work Partitioning
+		\item Allows subscribing to sub results
+		\item \dots or the joined overall result
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile, shrink]{Descriptive Implementation}
+\begin{javascriptcode}
+const imageWidth = 10000;
+const imageHeight = 10000;
+
+function computePixel(x, y) {
+	// ...
+	return n;
+}
+
+function computeMandelbrotLine(y) {
+	const line = new Uint8ClampedArray(imageWidth * 4);
+	for (let x = 0; x < imageWidth; ++x) {
+		line[x * 4] = computePixel(x, y);
+	}
+	return line;
+}
+
+parallel
+	.range(imageHeight) 
+	.map(computeMandelbrotLine)	 
+	.subscribe((subResult, index, batchSize) => /* draw line */)
+	.catch(error => /* handle error in computation of any line */)
+	.then(result => /* handle overall result */);
+	\end{javascriptcode}
+\end{frame}

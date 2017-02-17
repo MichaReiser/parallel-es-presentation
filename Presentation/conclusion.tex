@@ -1,0 +1,52 @@
+\section{Conclusion}
+\begin{frame}{Conclusion}
+	\begin{itemize}
+		\item Parallel.es eases writing multithreaded JS applications
+		\item It is platform independent
+		\item Compared to alternatives (\cite{hamstersjs,SavitzkyMayr2016, Wermke2016}), 
+		\begin{itemize}
+			\item The API is type-safe
+			\item Performs well in most cases
+			\item Transpilation allows a seamless integration
+		\end{itemize}
+		\item Source Map support is helpful
+		\item However, no support for
+			\begin{itemize}
+				\item Low Level synchronization primitives
+				\item Recursive Tasks
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{However}
+	\begin{itemize}[<+->]
+		\item The problem needs to fit to be easy parallelizable
+		\item \dots otherwise, a lot of prior work might be needed
+		\item \dots maybe, these improvements are already sufficient
+		\item \dots and parallelization always adds non-inherent complexity 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Further Work}
+	\begin{itemize}[<+->]
+		\item WebAssembly: A new standard of the Web
+		\item Provides a stack machine 
+		\item Allows to run C++ code in the browser
+		\item However, who wants to write C++ ;)
+		\item Controversial Idea: compile a subset of JS to Web Assembly
+		\item Hopefully profit from better performance
+		\item And if time allows, take benefit of the pthreads API
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Further Resources}
+	\begin{itemize}
+		\item Project Page~\cite{Reiser2017}
+		\item Project Thesis Paper~\cite{Reiser2016}
+		\item Optimization Killers~\cite{bluebird2017}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\printbibliography
+\end{frame}

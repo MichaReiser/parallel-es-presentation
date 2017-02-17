@@ -1,0 +1,80 @@
+\documentclass{beamer}
+% \documentclass[aspectratio=169]{beamer}
+
+\usepackage{booktabs}
+\usepackage{adjustbox}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\pgfplotscreateplotcyclelist{mylist cycle}{%
+  {TolDarkBlue, mark=*, mark size=1.5pt},
+  {TolLightBrown, mark=square*, mark size=1.3pt},
+  {TolLightGreen, mark=triangle*, mark size=1.5pt},
+  {TolDarkBrown, mark=diamond*, mark size=1.5pt},
+  {TolDarkBlue, mark=star*, mark size=1.5pt},
+  {TolLightBrown, mark=otimes*, mark size=1.3pt},
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+
+% Beamer Configuration
+\usepackage{appendixnumberbeamer}
+\hypersetup{pdfstartview={Fit}}
+\usetheme{metropolis}
+
+% General Latex configuration
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\bibliography{./bibliography.bib}	
+
+% Code
+\usepackage{xcolor}
+\usepackage[outputdir=.texpadtmp,section]{minted}
+\definecolor{light-gray}{gray}{0.9}
+% \begin{javascriptcode}...
+\newminted{javascript}{tabsize=2, linenos=true, fontsize=\scriptsize, xleftmargin=3.5ex, highlightcolor=light-gray}
+
+% \javascript/code/
+\newmintinline{javascript}{}
+
+% \javascriptfile{name}
+\newmintedfile{javascript}{tabsize=2, linenos=true, fontsize=\scriptsize, xleftmargin=3.5ex, mathescape,  breaklines=true}
+
+% Presentation configuration
+\author{Micha Reiser}
+\title{Parallel.es}
+\subtitle{Parallelize your JavaScript Applications with Ease}
+\institute{HSR}
+
+\titlegraphic{\includegraphics[width=2cm]{kw_logo}}
+
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}{Overview}
+	\tableofcontents
+\end{frame}
+
+
+\input{introduction}
+\input{situation}
+\input{solution}
+\input{implementation}
+\input{use-case}
+\input{conclusion}
+
+\begin{frame}[standout]
+	Questions and Discussion
+\end{frame}
+
+\input{appendix}
+
+\end{document}

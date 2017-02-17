@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+
+	<title>Test Seite</title>
+</head>
+<body>
+<div class="container-fluid">
+
+	<h1>
+		Parallel ES Monte-Carlo Simulation
+	</h1>
+
+	<form class="form-inline" action="#">
+		<div class="form-check">
+			<label class="form-check-label">
+				<input type="radio" class="form-check-input" id="version-1" name="version" checked="checked" value="1"/>
+				Version 1
+			</label>
+		</div>
+
+		<div class="form-check">
+			<label class="form-check-label">
+				<input type="radio" class="form-check-input" id="version-2" name="version" checked="checked" value="2"/>
+				Version 2
+			</label>
+		</div>
+
+		<div class="form-check">
+			<label class="form-check-label">
+				<input type="radio" class="form-check-input" id="version-final" name="version" checked="checked" value="final"/>
+				Final Version
+			</label>
+		</div>
+
+		<div class="form-check">
+			<label class="form-check-label">
+				<input type="radio" class="form-check-input" id="version-parallel-dynamic" name="version" checked="checked" value="dynamic"/>
+				Parallel-Dynamic
+			</label>
+		</div>
+
+		<div class="form-check">
+			<label class="form-check-label">
+				<input type="radio" class="form-check-input" id="version-parallel-transpiled" name="version" checked="checked" value="transpiled"/>
+				Parallel-Transpiled
+			</label>
+		</div>
+	</form>
+
+
+	<h2>Monte Carlo</h2>
+	<table class="table table-striped" id="montecarlo-table">
+		<tr>
+			<th>Project Start /Groups</th>
+			<th>Investment Amount</th>
+			<th>Green</th>
+			<th>Yellow</th>
+			<th>Gray</th>
+			<th>Red</th>
+		</tr>
+	</table>
+
+	<input type="button" id="montecarlo-run" value="Run..." class="btn btn-primary"/>
+
+
+	<input type="button" id="fibonacci-run" value="Compute Fibonacci" class="btn btn-default">
+</div>
+
+<script src="./example.js"></script>
+</body>
+</html>

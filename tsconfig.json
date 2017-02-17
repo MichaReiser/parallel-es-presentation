@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "pretty": true,
+    "outDir": "dist",
+    "target": "es6",
+    "sourceMap": true,
+    "lib": ["es6", "dom"],
+    "typeRoots": ["./types", "node_modules/@types"]
+  }
+}

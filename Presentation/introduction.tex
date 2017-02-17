@@ -1,0 +1,23 @@
+\section{Motivation}
+
+\begin{frame}[fragile]{Motivation for Parallelization}
+	\begin{itemize}[<+->]
+		\item Performance
+		\item \dots but moreover, a better user experience
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{A better User Experience?}
+	\begin{itemize}
+		\item Because JavaScript is single threaded
+		\item Long running tasks are blocking the UI-thread
+		\item and therefore, the UI is not responsive
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The JavaScript Event Loop is the Reason therefore}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{event-loop}\cite{Swenson-Healey2013}
+	\end{center}
+\end{frame}
+

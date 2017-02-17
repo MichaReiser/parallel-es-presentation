@@ -1,0 +1,37 @@
+{
+  "name": "parallel-es-presentation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Micha Reiser",
+  "license": "MIT",
+  "scripts": {
+    "build": "cross-env NODE_ENV=prod webpack",
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --progress --hot",
+    "test": "echo \"no tests specified\""
+  },
+  "dependencies": {
+    "@types/benchmark": "^1.0.30",
+    "@types/lodash": "^4.14.52",
+    "@types/requirejs": "^2.1.28",
+    "benchmark": "^2.1.3",
+    "lodash": "^4.17.4",
+    "parallel-es": "^0.1.17",
+    "simjs-random": "^0.2.6"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.0.4",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.1",
+    "babel-plugin-parallel-es": "^0.1.8",
+    "babel-preset-es2015": "^6.22.0",
+    "cross-env": "^3.1.4",
+    "json2csv": "^3.7.3",
+    "parallel-es-webpack-plugin": "^0.1.2",
+    "source-map-loader": "^0.1.6",
+    "typescript": "^2.1.6",
+    "webpack": "^2.2.1",
+    "webpack-config": "^7.0.0",
+    "webpack-dev-server": "^2.3.0",
+    "worker-loader": "^0.7.1"
+  }
+}
